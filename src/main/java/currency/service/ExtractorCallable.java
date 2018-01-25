@@ -14,6 +14,8 @@ import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 /**
  * Callable to enable parallel pulling of data from txt files for large date range ranges
@@ -68,9 +70,12 @@ public class ExtractorCallable implements Callable<Map<String, List<RateRepresen
     
     private List<String> readFile(String filename) {
         List<String> records = new ArrayList<String>();
+        logger.info("Path: " + getClass().getResource("/data/" + filename + ".txt"));
+        Resource resource = new ClassPathResource("/data/" + filename + ".txt");
+        
         try {
-            logger.info("Path: " + getClass().getResource("/data/" + filename + ".txt"));
-            File file = new File(getClass().getResource("/data/" + filename + ".txt").getFile());
+            logger.info("R Path: " + resource.getFile().getAbsolutePath());
+            File file = resource.getFile();
             if(file.exists()) {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String line;
