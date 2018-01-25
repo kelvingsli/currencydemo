@@ -69,8 +69,7 @@ public class ExtractorCallable implements Callable<Map<String, List<RateRepresen
     private List<String> readFile(String filename) {
         List<String> records = new ArrayList<String>();
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("data/" + filename + ".txt").getFile());
+            File file = new File(getClass().getResource("data/" + filename + ".txt").getFile());
             if(file.exists()) {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String line;

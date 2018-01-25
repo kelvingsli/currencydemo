@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="currency.CurrencyControllerTest" time="0.188" tests="3" errors="0" skipped="0" failures="0">
+<testsuite name="currency.CurrencyControllerTest" time="0.156" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_161\jre\bin"/>
@@ -60,7 +60,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testGetRateByDate" classname="currency.CurrencyControllerTest" time="0.109"/>
-  <testcase name="testCompareRate" classname="currency.CurrencyControllerTest" time="0.063"/>
+  <testcase name="testGetRateByDate" classname="currency.CurrencyControllerTest" time="0.125"/>
+  <testcase name="testCompareRate" classname="currency.CurrencyControllerTest" time="0.015"/>
   <testcase name="testGetRateByRange" classname="currency.CurrencyControllerTest" time="0.016"/>
 </testsuite>
