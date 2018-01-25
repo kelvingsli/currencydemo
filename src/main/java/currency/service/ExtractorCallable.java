@@ -69,6 +69,7 @@ public class ExtractorCallable implements Callable<Map<String, List<RateRepresen
     private List<String> readFile(String filename) {
         List<String> records = new ArrayList<String>();
         try {
+            logger.info("Path: " + getClass().getResource("/data/" + filename + ".txt"));
             File file = new File(getClass().getResource("/data/" + filename + ".txt").getFile());
             if(file.exists()) {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -78,7 +79,7 @@ public class ExtractorCallable implements Callable<Map<String, List<RateRepresen
                 }
             }
         } catch(Exception ex) {
-            logger.debug("Error when reading file " + filename + ".txt", ex);
+            logger.error("Error when reading file " + filename + ".txt", ex);
         }
         return records;
     }
