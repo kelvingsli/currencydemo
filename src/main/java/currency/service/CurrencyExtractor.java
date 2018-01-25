@@ -36,20 +36,22 @@ public class CurrencyExtractor {
     private static final Logger logger = Logger.getLogger(CurrencyExtractor.class);
     private CurrencyRepository currencyRepository;
     private int executorThreadPoolSize;
+    private String dataFilePath;
     
     private Pattern p = Pattern.compile("1 (?<currency>\\w{3,}) traded at (?<rate>\\d+\\.\\d+) times USD");
     
     @Autowired
-    public CurrencyExtractor(CurrencyRepository currencyRepository, int executorThreadPoolSize) {
+    public CurrencyExtractor(CurrencyRepository currencyRepository, int executorThreadPoolSize, String dataFilePath) {
         this.currencyRepository = currencyRepository;
         this.executorThreadPoolSize = executorThreadPoolSize;
+        this.dataFilePath = dataFilePath;
     }
     
     public Map<String, List<RateRepresentation>> getRateMap(List<String> filenames) {
         List<Future<Map<String, List<RateRepresentation>>>> futures = new ArrayList<Future<Map<String, List<RateRepresentation>>>>();
         ExecutorService executors = Executors.newFixedThreadPool(executorThreadPoolSize);
         for (String filename : filenames) {
-            futures.add(executors.submit(new ExtractorCallable(currencyRepository, filename)));
+            futures.add(executors.submit(new ExtractorCallable(currencyRepository, filename, dataFilePath)));
         }
         
         Map<String, List<RateRepresentation>> map = new HashMap<String, List<RateRepresentation>>();

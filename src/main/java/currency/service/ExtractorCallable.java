@@ -30,10 +30,12 @@ public class ExtractorCallable implements Callable<Map<String, List<RateRepresen
     private Pattern p = Pattern.compile("1 (?<currency>\\w{3,}) traded at (?<rate>\\d+\\.\\d+) times USD");
     private String filename;
     private CurrencyRepository currencyRepository;
+    private String dataFilePath;
     
-    public ExtractorCallable(CurrencyRepository currencyRepository, String filename) {
+    public ExtractorCallable(CurrencyRepository currencyRepository, String filename, String dataFilePath) {
         this.filename = filename;
         this.currencyRepository = currencyRepository;
+        this.dataFilePath = dataFilePath;
     }
     
     @Override
@@ -70,12 +72,9 @@ public class ExtractorCallable implements Callable<Map<String, List<RateRepresen
     
     private List<String> readFile(String filename) {
         List<String> records = new ArrayList<String>();
-        logger.info("Path: " + getClass().getResource("/data/" + filename + ".txt"));
-        Resource resource = new ClassPathResource("/data/" + filename + ".txt");
-        
         try {
-            logger.info("R Path: " + resource.getFile().getAbsolutePath());
-            File file = resource.getFile();
+            File file = new File(dataFilePath + filename + ".txt");
+            logger.info("Reading from file " + file.getPath());
             if(file.exists()) {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 String line;

@@ -17,4 +17,9 @@ public class AppConfig {
     public int executorThreadPoolSize() {
         return 5;
     }
+    
+    @Bean
+    public String dataFilePath() {
+        return "c:/data/";
+    }
 }

@@ -1,0 +1,8 @@
+currency\service\ExtractorCallable.class
+currency\service\CurrencyExtractor.class
+currency\CurrencyController.class
+currency\representations\RateRepresentation.class
+currency\repository\CurrencyRepository.class
+currency\config\AppConfig.class
+currency\Application.class
+currency\config\RedisConfig.class
