@@ -35,7 +35,7 @@ This can be changed within the AppConfig file under the currency.config path.
 
 The following APIs are exposed by the application
 
-# Get all currency rates on a specific date
+### Get all currency rates on a specific date
 
 The api can queried via
 ```
@@ -45,7 +45,7 @@ Sample: http://localhost:8080/date?date=2017-01-01
 where 
 - date is in the yyyy-MM-dd format
 
-# Get conversion rate between 2 currencies
+### Get conversion rate between 2 currencies
 
 The api can be queried via
 ```
@@ -56,7 +56,7 @@ where
 - date is in the yyyy-MM-dd format
 - curr1 & curr2 are 3 character currency codes
 
-# Get currency rate for a currency across a date range
+### Get currency rate for a currency across a date range
 
 The api can be queried via
 ```
